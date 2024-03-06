@@ -196,9 +196,9 @@ def form4(person):  # 输入今天日期以及需要提前的时间
     def ok():
         flag_ins = True
         date = today.get()
-        date1 = parser.parse(date).date()
-        calculation(person, date1)
         planning_days = adv_day.get()
+        date1 = parser.parse(date).date()
+        calculation(person, date1, planning_days)
         try:
             birth_try = datetime.datetime.strptime(date, "%Y.%m.%d")
         except ValueError:
@@ -320,7 +320,7 @@ def txt_change(aiming_saturday, person):  # 更改txt文档
             ff.write(line_new)  # 写入一个新文件中
 
 
-def calculation(person, date):
+def calculation(person, date, planning_days):
     global distance_days
     global aiming_date
     global aiming_saturday
